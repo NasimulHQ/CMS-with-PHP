@@ -9,7 +9,7 @@
 // }
 
 $connection = mysqli_connect('localhost', 'root', '12345678', 'cms');
-if($connection){
-    echo "we are connected";
-}
+// if($connection){
+//     echo "we are connected";
+// }
 ?>

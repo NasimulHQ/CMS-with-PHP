@@ -1,3 +1,6 @@
+<!-- db connection -->
+<?php include ("includes/db.php") ?>
+
 <!-- Header include -->
 <?php include ("includes/header.php") ?>
 
@@ -6,12 +9,10 @@
 
     <!-- Page Content -->
     <div class="container">
-
         <div class="row">
 
             <!-- Blog Entries Column -->
             <div class="col-md-8">
-
                 <h1 class="page-header">
                     Page Heading
                     <small>Secondary Text</small>
