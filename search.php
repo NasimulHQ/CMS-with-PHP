@@ -35,7 +35,7 @@
 
                 if ($count == 0) {
 
-                    echo "<h1> NO RESULT</h1>";
+                    echo "<h1> NO RESULT </h1>";
                 } else {
 
                     while ($row = mysqli_fetch_assoc($search_query)) {
@@ -75,16 +75,6 @@
 
 
             ?>
-
-
-
-
-
-
-
-
-
-
 
 
         </div>

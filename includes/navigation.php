@@ -22,14 +22,14 @@
              
              while($row = mysqli_fetch_assoc($select_all_categories_query)){
                 $cat_title = $row['cat_title'];
-                echo "<li><a href='#'>{$cat_title}</li>";
+                echo "<li><a href='#'>{$cat_title}</a></li>";
              }
              ?>
 
-                 <!-- <li>
-                     <a href="#">About</a>
-                 </li>
                  <li>
+                     <a href="Admin">Admin</a>
+                 </li>
+                 <!-- <li>
                      <a href="#">Services</a>
                  </li>
                  <li>
