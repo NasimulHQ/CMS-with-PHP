@@ -8,6 +8,7 @@
             <th>Status</th>
             <th>Image</th>
             <th>Tags</th>
+            <th>Content</th>
             <th>Comments</th>
             <th>Date</th>
         </tr>
@@ -25,6 +26,7 @@
             $post_status = $row['post_status'];
             $post_image = $row['post_image'];
             $post_tags = $row['post_tags'];
+            $post_content = $row['post_content'];
             $post_comment_count = $row['post_comment_count'];
             $post_date = $row['post_date'];
 
@@ -45,6 +47,7 @@
             echo "<td>$post_status</td>";
             echo "<td><img width= '100' src = '../images/$post_image'></td>";
             echo "<td>$post_tags</td>";
+            echo "<td>$post_content</td>";
             echo "<td>$post_comment_count</td>";
             echo "<td>$post_date</td>";
             echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'</a>Edit</td>";
