@@ -59,8 +59,8 @@
 
             echo "<td>$comment_date</td>";
 
-            echo "<td><a href='posts.php?delete='</a>Approve</td>";
-            echo "<td><a href='posts.php?delete='</a>UnApprove</td>";
+            echo "<td><a href='comments.php?approve=$comment_id'</a>Approve</td>";
+            echo "<td><a href='comments.php?unapprove=$comment_id'</a>UnApprove</td>";
             echo "<td><a href='comments.php?delete=$comment_id'</a>Delete</td>";
             echo "<tr>";
         }
@@ -72,7 +72,23 @@
     </tbody>
 </table>
 
-<?php // delete post from admin
+<?php
+
+if (isset($_GET['approve'])) {
+    $the_comment_approve = $_GET['approve'];
+    $query = "UPDATE comments set comment_status = 'approve' WHERE comment_id = $the_comment_approve ";
+    $approve_query = mysqli_query($connection, $query);
+    header("location: comments.php"); //After clicking delete| reload the same page
+}
+
+if (isset($_GET['unapprove'])) {
+    $the_comment_unapporve = $_GET['unapprove'];
+    $query = "UPDATE comments set comment_status = 'unapprove' WHERE comment_id= $the_comment_unapporve ";
+    $unapprove_query = mysqli_query($connection, $query);
+    header("location: comments.php"); //After clicking delete| reload the same page
+}
+
+// delete post from admin
 if (isset($_GET['delete'])) {
     $the_comment_delete = $_GET['delete'];
     $query = "DELETE FROM comments WHERE comment_id = {$the_comment_delete} ";
