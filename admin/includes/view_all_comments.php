@@ -45,22 +45,23 @@
             
             echo "<td>$comment_status</td>";
 
+            // In Response to
+
             $query = "SELECT * FROM posts WHERE post_id = $comment_post_id ";
             $select_query_post_id = mysqli_query($connection, $query);
             while($row = mysqli_fetch_assoc($select_query_post_id)){
               $post_id = $row ['post_id'];
               $post_title = $row ['post_title'];
 
-                echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
+         echo "<td><a href='../post.php?p_id=$post_id'>$post_title</a></td>";
 
             }
 
-            
             echo "<td>$comment_date</td>";
 
             echo "<td><a href='posts.php?delete='</a>Approve</td>";
             echo "<td><a href='posts.php?delete='</a>UnApprove</td>";
-            echo "<td><a href='posts.php?delete='</a>Delete</td>";
+            echo "<td><a href='comments.php?delete=$comment_id'</a>Delete</td>";
             echo "<tr>";
         }
 
@@ -73,10 +74,10 @@
 
 <?php // delete post from admin
 if (isset($_GET['delete'])) {
-    $the_post_delete = $_GET['delete'];
-    $query = "DELETE FROM posts WHERE post_id = {$the_post_delete} ";
+    $the_comment_delete = $_GET['delete'];
+    $query = "DELETE FROM comments WHERE comment_id = {$the_comment_delete} ";
     $delete_query = mysqli_query($connection, $query);
-    header("location: posts.php"); //After clicking delete| reload the same page
+    header("location: comments.php"); //After clicking delete| reload the same page
 }
 
 ?>
