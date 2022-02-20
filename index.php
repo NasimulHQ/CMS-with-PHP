@@ -24,6 +24,14 @@
                 $post_date = $row['post_date'];
                 $post_image = $row['post_image'];
                 $post_content = substr($row['post_content'],0,100);
+                $post_status = $row['post_status'];
+
+                if($post_status !== 'published'){
+                    echo "<h1> No Post </h1>";
+                }
+                else{
+
+               
 
             ?>
 
@@ -48,18 +56,9 @@
 
                 <hr>
 
-            <?php } ?>
+            <?php } } ?>
 
-
-            <!-- Pager -->
-            <!-- <ul class="pager">
-                    <li class="previous">
-                        <a href="#">&larr; Older</a>
-                    </li>
-                    <li class="next">
-                        <a href="#">Newer &rarr;</a>
-                    </li>
-                </ul> -->
+            
 
         </div>
 
