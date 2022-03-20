@@ -9,6 +9,7 @@ if (isset($_POST['create_post'])) {
     $post_image_temp = $_FILES['image']['tmp_name'];
 
     $post_tags = $_POST['post_tags'];
+    // $post_comment_count = $_POST['post_comment_count'];
     $post_content = $_POST['post_content'];
     $post_date = date('d-m-y');
     // $post_comment_count = 4;
@@ -17,10 +18,10 @@ if (isset($_POST['create_post'])) {
 
     $query = "INSERT INTO posts (post_category_id, 	post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status)";
 
-    $query .= "VALUES({$post_category_id}, '{$post_title}', '{$post_author}',   now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{ $post_status}')";
+    $query .= "VALUES({$post_category_id}, '{$post_title}', '{$post_author}',   now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{ $post_status}')";
 
     $create_post_query = mysqli_query($connection, $query);
-
+    
     confirmQuery($create_post_query);
 }
 
