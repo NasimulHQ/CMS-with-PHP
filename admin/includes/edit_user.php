@@ -11,6 +11,7 @@ if (isset($_GET['edit_user'])) {
         $user_lastname = $row['user_lastname'];
         $user_email = $row['user_email'];
         $user_role = $row['user_role'];
+        $user_password = $row['user_password'];
         // $user_image = $row['user_image'];
     }
 }
@@ -28,13 +29,16 @@ if (isset($_POST['edit_user'])) {
     $query .= "user_firstname  = '$user_firstname', ";
     $query .= "user_lastname  = '$user_lastname', ";
     $query .= "user_role = '$user_role', ";
-    $query .= "username   =  $username, ";
+    $query .= "username   =  '$username', ";
     $query .= "user_email = '$user_email', ";
     $query .= "user_password   = '$user_password' ";
     $query .= "WHERE user_id = $the_user_id ";
 
-    $edit_user_query = mysqli_query ($connection, $query);
-    confirmQuery($edit_user_query);
+    $edit_user_query = mysqli_query($connection, $query);
+    if (!$edit_user_query) {
+        die("QUERY FILED" . mysqli_error($connection));
+    }
+    // confirmQuery($edit_user_query);
 }
 
 
@@ -62,12 +66,11 @@ if (isset($_POST['edit_user'])) {
 
             <option value="subscriber"><?php echo $user_role ?></option>
             <?php
-                if($user_role == 'admin'){
+            if ($user_role == 'admin') {
                 echo "<option value='subscriber'>subscriber</option>";
-                 
-                }else{
+            } else {
                 echo "<option value='admin'>admin</option>";
-                }
+            }
             ?>
 
         </select>
