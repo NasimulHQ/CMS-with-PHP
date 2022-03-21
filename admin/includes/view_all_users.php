@@ -57,7 +57,7 @@
 
             echo "<td><a href='comments.php?approve='</a>Approve</td>";
             echo "<td><a href='comments.php?unapprove='</a>UnApprove</td>";
-            echo "<td><a href='comments.php?delete='</a>Delete</td>";
+            echo "<td><a href='users.php?delete={$user_id}'</a>Delete</td>";
             echo "<tr>";
         }
 
@@ -86,10 +86,10 @@ if (isset($_GET['unapprove'])) {
 
 // delete post from admin
 if (isset($_GET['delete'])) {
-    $the_comment_delete = $_GET['delete'];
-    $query = "DELETE FROM comments WHERE comment_id = {$the_comment_delete} ";
+    $the_user_delete = $_GET['delete'];
+    $query = "DELETE FROM users WHERE user_id = {$the_user_delete} ";
     $delete_query = mysqli_query($connection, $query);
-    header("location: comments.php"); //After clicking delete| reload the same page
+    header("location: users.php"); //After clicking delete| reload the same page
 }
 
 ?>
