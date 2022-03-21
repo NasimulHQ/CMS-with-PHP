@@ -55,8 +55,8 @@
 
             echo "<td>$user_role</td>";
 
-            echo "<td><a href='comments.php?approve='</a>Approve</td>";
-            echo "<td><a href='comments.php?unapprove='</a>UnApprove</td>";
+            echo "<td><a href='users.php?change_to_admin={$user_id}'</a>Admin</td>";
+            echo "<td><a href='users.php?change_to_sub={$user_id}'</a>Subcriber</td>";
             echo "<td><a href='users.php?delete={$user_id}'</a>Delete</td>";
             echo "<tr>";
         }
@@ -70,18 +70,18 @@
 
 <?php
 
-if (isset($_GET['approve'])) {
-    $the_comment_approve = $_GET['approve'];
-    $query = "UPDATE comments set comment_status = 'approve' WHERE comment_id = $the_comment_approve ";
-    $approve_query = mysqli_query($connection, $query);
-    header("location: comments.php"); //After clicking delete| reload the same page
+if (isset($_GET['change_to_admin'])) {
+    $the_user_admin = $_GET['change_to_admin'];
+    $query = "UPDATE users set user_role = 'Admin' WHERE user_id = $the_user_admin ";
+    $change_to_admin_query = mysqli_query($connection, $query);
+    header("location: users.php"); //After clicking delete| reload the same page
 }
 
-if (isset($_GET['unapprove'])) {
-    $the_comment_unapporve = $_GET['unapprove'];
-    $query = "UPDATE comments set comment_status = 'unapprove' WHERE comment_id= $the_comment_unapporve ";
-    $unapprove_query = mysqli_query($connection, $query);
-    header("location: comments.php"); //After clicking delete| reload the same page
+if (isset($_GET['change_to_sub'])) {
+    $the_user_sub = $_GET['change_to_sub'];
+    $query = "UPDATE users set user_role = 'Subcriber' WHERE user_id= $the_user_sub ";
+    $change_to_sub_query = mysqli_query($connection, $query);
+    header("location: users.php"); //After clicking delete| reload the same page
 }
 
 // delete post from admin
