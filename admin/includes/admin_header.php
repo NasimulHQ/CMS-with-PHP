@@ -5,11 +5,8 @@
 <?php 
 
 // if you are a Admin then you can login to admin panel
-if(isset($_SESSION['user_role'])){
-    if($_SESSION['user_role'] != 'admin'){
-        header("Location: ../index.php");
-    }
-   
+if(!isset($_SESSION['user_role'])){
+        header("Location: ../index.php");  
 }
 
 ?>
