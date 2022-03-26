@@ -2,6 +2,17 @@
 <?php include "functions.php" ?>
 <?php ob_start() ?>
 <?php session_start(); ?>
+<?php 
+
+// if you are a Admin then you can login to admin panel
+if(isset($_SESSION['user_role'])){
+    if($_SESSION['user_role'] != 'admin'){
+        header("Location: ../index.php");
+    }
+   
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
