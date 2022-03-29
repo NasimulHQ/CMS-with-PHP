@@ -14,7 +14,7 @@
                      <h1 class="page-header">
                          Welcome to Admin Page
 
-                         <small><?php echo $_SESSION['username'] ?></small>
+                         <small><?php echo $_SESSION['username']; ?></small>
                      </h1>
 
                  </div>
@@ -92,14 +92,14 @@
                                      <i class="fa fa-user fa-5x"></i>
                                  </div>
                                  <div class="col-xs-9 text-right">
-                     <?php
+                                     <?php
 
-                         $query = "SELECT * FROM users";
-                         $select_all_user = mysqli_query($connection, $query);
-                         $user_counts = mysqli_num_rows($select_all_user);
-                         echo "<div class='huge'>{$user_counts}</div>"
+                                        $query = "SELECT * FROM users";
+                                        $select_all_user = mysqli_query($connection, $query);
+                                        $user_counts = mysqli_num_rows($select_all_user);
+                                        echo "<div class='huge'>{$user_counts}</div>"
 
-                         ?>
+                                        ?>
 
                                      <div> Users</div>
                                  </div>
@@ -122,14 +122,14 @@
                                      <i class="fa fa-list fa-5x"></i>
                                  </div>
                                  <div class="col-xs-9 text-right">
-                         <?php
+                                     <?php
 
-                     $query = "SELECT * FROM categories";
-                    $select_all_categories = mysqli_query($connection, $query);
-                   $categories_counts = mysqli_num_rows($select_all_categories);
-                        echo "<div class='huge'>{$categories_counts}</div>"
+                                        $query = "SELECT * FROM categories";
+                                        $select_all_categories = mysqli_query($connection, $query);
+                                        $categories_counts = mysqli_num_rows($select_all_categories);
+                                        echo "<div class='huge'>{$categories_counts}</div>"
 
-                        ?>
+                                        ?>
                                      <div>Categories</div>
                                  </div>
                              </div>
@@ -145,6 +145,39 @@
                  </div>
              </div>
              <!-- /.row -->
+
+        <!-- Coloum chart start -->
+             <div class="row">
+                 <script type="text/javascript">
+                     google.charts.load('current', {
+                         'packages': ['bar']
+                     });
+                     google.charts.setOnLoadCallback(drawChart);
+
+                     function drawChart() {
+                         var data = google.visualization.arrayToDataTable([
+                             ['Year', 'Sales', 'Expenses', 'Profit'],
+                             ['2014', 1000, 400, 200],
+                             ['2015', 1170, 460, 250],
+                             ['2016', 660, 1120, 300],
+                             ['2017', 1030, 540, 350]
+                         ]);
+
+                         var options = {
+                             chart: {
+                                 title: 'Company Performance',
+                                 subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                             }
+                         };
+
+                         var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+                         chart.draw(data, google.charts.Bar.convertOptions(options));
+                     }
+                 </script>
+    <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+             </div>
+
 
          </div>
          <!-- /.container-fluid -->

@@ -35,7 +35,7 @@
         $query .= "user_role = '$user_role', ";
         $query .= "username   =  '$username', ";
         $query .= "user_email = '$user_email', ";
-        $query .= "user_password   = '$user_password' ";
+        $query .= "user_password = '$user_password' ";
         $query .= "WHERE username = '$username' ";
 
         $edit_user_query = mysqli_query($connection, $query);
