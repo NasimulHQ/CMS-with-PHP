@@ -146,6 +146,22 @@
              </div>
              <!-- /.row -->
 
+             <?php
+    $query = "SELECT * FROM posts WHERE post_status = 'draft' ";
+    $select_all_draft_post = mysqli_query($connection, $query);
+    $post_draft_count = mysqli_num_rows($select_all_draft_post);
+
+    $query = "SELECT * FROM comments WHERE comment_status = 'unapprove' ";
+    $select_unapprove_comment = mysqli_query($connection, $query);
+    $unapprove_count = mysqli_num_rows($select_unapprove_comment);
+
+    $query = "SELECT * FROM users WHERE user_role = 'subscriber' ";
+    $select_user_subcriber = mysqli_query($connection, $query);
+    $subcriber_count = mysqli_num_rows($select_user_subcriber);
+             
+             
+             ?>
+
              <!-- Coloum chart start -->
              <div class="row">
                  <script type="text/javascript">
@@ -159,10 +175,10 @@
                              ['Data', 'Count'],
 
 <?php
-$element_text = ['Active Posts', 'Comments', 'Users', 'Categories'];
- $element_count = [$post_count, $comment_count, $user_count, $category_count];
+$element_text = ['Active Posts', 'Draft Post', 'Comments', 'Unapprove Comment', 'Users', 'Subcriber', 'Categories'];
+ $element_count = [$post_count, $post_draft_count, $comment_count, $unapprove_count, $user_count, $subcriber_count, $category_count];
 
-for($i= 0; $i < 4; $i++){
+for($i= 0; $i < 7; $i++){
  echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
          }
 
