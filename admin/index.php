@@ -146,7 +146,7 @@
              </div>
              <!-- /.row -->
 
-             <?php
+ <?php
     $query = "SELECT * FROM posts WHERE post_status = 'draft' ";
     $select_all_draft_post = mysqli_query($connection, $query);
     $post_draft_count = mysqli_num_rows($select_all_draft_post);
@@ -159,8 +159,7 @@
     $select_user_subcriber = mysqli_query($connection, $query);
     $subcriber_count = mysqli_num_rows($select_user_subcriber);
              
-             
-             ?>
+ ?>
 
              <!-- Coloum chart start -->
              <div class="row">
