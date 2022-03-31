@@ -18,7 +18,7 @@ while ($row = mysqli_fetch_assoc($select_post_by_id)) {
     $post_date = $row['post_date'];
 }
 
-if(isset($_POST['update_post'])){
+if (isset($_POST['update_post'])) {
 
     $post_title          =  $_POST['post_title'];
     $post_author          =  $_POST['post_author'];
@@ -53,11 +53,9 @@ if(isset($_POST['update_post'])){
     $query .= "WHERE post_id = {$the_post_id} ";
 
     $update_post = mysqli_query($connection, $query);
-    if(!$update_post){
+    if (!$update_post) {
         die("QUERY FILED" . mysqli_error($connection));
     }
-
-
 }
 
 ?>
@@ -94,10 +92,28 @@ if(isset($_POST['update_post'])){
         <label for="post_author">Post Author</label>
         <input value="<?php echo $post_author; ?>" type="text" class="form-control" name="post_author" placeholder="Enter post author">
     </div>
+
     <div class="form-group">
+        <select name="post_status" id="">
+<option value='<?php echo $post_status; ?>'><?php echo $post_status; ?></option>
+
+            <?php
+            if ($post_status == 'published') {
+                echo "<option value='draft'>Draft</option>";
+            } else {
+                echo "<option value='published'>Publish</option>";
+            }
+            ?>
+        </select>
+    </div>
+
+
+
+
+    <!-- <div class="form-group">
         <label for="post_status">Post Status</label>
         <input value="<?php echo $post_status; ?>" type="text" class="form-control" name="post_status" placeholder="Enter post status">
-    </div>
+    </div> -->
 
     <div class="form-group">
         <label for="post_image">Post Image</label> <br>
