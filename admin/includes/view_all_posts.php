@@ -7,14 +7,15 @@
                 <option value="">Draft</option>
                 <option value="">Delete</option>
             </select>
-        </div> 
+        </div>
         <div class="col-xs-4">
             <input type="submit" name="submit" class="btn btn-success" value="Apply">
             <a class="btn btn-primary" href="add_post.php">Add New</a>
         </div>
-        
+
         <thead>
             <tr>
+                <th><input id="CheckAllBoxes" type="checkbox"></th>
                 <th>Id</th>
                 <th>Author</th>
                 <th>Title</th>
@@ -47,6 +48,11 @@
                 $post_date = $row['post_date'];
 
                 echo "<tr>";
+            ?>
+
+  <td><input class='CheckBoxes' type='checkbox' name='checkBoxArray[]' value='<?php echo $post_id; ?>'></td>
+
+            <?php
                 echo "<td>$post_id</td>";
                 echo "<td>$post_author</td>";
                 echo "<td>$post_title</td>";
