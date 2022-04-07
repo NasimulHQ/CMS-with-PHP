@@ -8,6 +8,18 @@ if(isset($_POST['checkBoxArray'])){
                 $update_to_publish_status = mysqli_query($connection, $query);
                 confirmQuery($update_to_publish_status);
                 break;
+
+            case 'draft':
+                $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValuId} ";
+                $update_to_draft_status = mysqli_query($connection, $query);
+                confirmQuery($update_to_draft_status);
+                break;
+
+            case 'delete':
+                $query = "DELETE FROM posts WHERE post_id = {$postValuId} ";
+                $update_to_delete_status = mysqli_query($connection, $query);
+                confirmQuery($update_to_delete_status);
+                break;      
         }
     }
 }
@@ -15,7 +27,7 @@ if(isset($_POST['checkBoxArray'])){
 ?>
 <form action="" method="POST">
     <table class="table table-bordered table-hover">
-        <div id="bulkOptionContainer" class="col-xs-4">
+        <div id="bulkOptionContainer" class="col-xs-4" style="padding: 0px;">
             <select class="form-control" name="bulk_options" id="">
                 <option value="">Select Options</option>
                 <option value="published">Publish</option>
