@@ -1,11 +1,26 @@
+<?php 
+if(isset($_POST['checkBoxArray'])){
+    foreach($_POST['checkBoxArray'] as $postValuId){
+        $bulk_options = $_POST['bulk_options'];
+        switch($bulk_options){
+            case 'published':
+                $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValuId} ";
+                $update_to_publish_status = mysqli_query($connection, $query);
+                confirmQuery($update_to_publish_status);
+                break;
+        }
+    }
+}
+
+?>
 <form action="" method="POST">
     <table class="table table-bordered table-hover">
         <div id="bulkOptionContainer" class="col-xs-4">
-            <select class="form-control" name="" id="">
+            <select class="form-control" name="bulk_options" id="">
                 <option value="">Select Options</option>
-                <option value="">Publish</option>
-                <option value="">Draft</option>
-                <option value="">Delete</option>
+                <option value="published">Publish</option>
+                <option value="draft">Draft</option>
+                <option value="delete">Delete</option>
             </select>
         </div>
         <div class="col-xs-4">
@@ -72,8 +87,8 @@
                 echo "<td>$post_content</td>";
                 echo "<td>$post_comment_count</td>";
                 echo "<td>$post_date</td>";
-                echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'</a>Edit</td>";
-                echo "<td><a href='posts.php?delete={$post_id}'</a>Delete</td>";
+                echo "<td><a class='btn btn-primary' href='posts.php?source=edit_post&p_id={$post_id}'</a>Edit</td>";
+                echo "<td><a class='btn btn-danger' href='posts.php?delete={$post_id}'</a>Delete</td>";
                 echo "<tr>";
             }
 
