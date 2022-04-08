@@ -23,7 +23,7 @@ if (isset($_POST['create_post'])) {
     // $query = "INSERT INTO `posts` ( `post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_comment_count`, `post_status`) VALUES ( '$post_category_id', '$post_title', '$post_author', now(), '$post_image', '$post_content', '$post_tags', '', '$post_status') ";
 
     $create_post_query = mysqli_query($connection, $query);
-    
+
     confirmQuery($create_post_query);
 }
 
@@ -62,9 +62,13 @@ if (isset($_POST['create_post'])) {
         <label for="post_author">Post Author</label>
         <input type="text" class="form-control" name="post_author" placeholder="Enter post author">
     </div>
+    
     <div class="form-group">
-        <label for="post_status">Post Status</label>
-        <input type="text" class="form-control" name="post_status" placeholder="Enter post status">
+        <select name="post_status" id="">
+            <option value="draft">Post Status</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+        </select>
     </div>
 
     <div class="form-group">
