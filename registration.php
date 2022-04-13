@@ -9,7 +9,7 @@ if(isset($_POST['submit'])){
     $email    = $_POST['email'];
     $password = $_POST['password'];
 
-    if(!empty($username) && !empty($username) && !empty($username)){
+    if(!empty($username) && !empty($email) && !empty($password)){
 
         $username = mysqli_real_escape_string($connection, $username);
         $email    = mysqli_real_escape_string($connection, $email);
@@ -23,9 +23,11 @@ if(isset($_POST['submit'])){
 
         $row = mysqli_fetch_array($select_query_randsalt);
         $salt = $row['randSalt'];
+        $password = crypt($password, $salt);
 
         $query = "INSERT INTO users (username, user_email, user_password, user_role, user_firstname, user_lastname, user_image)";
         $query .= "VALUES('{$username}', '{$email}', '{$password}', 'subcriber', '', '', '')";
+
         $register_user_query = mysqli_query($connection, $query);
         if (!$register_user_query) {
             die("Query Failed" . mysqli_error($connection) . ' ' . mysqli_error($connection));
