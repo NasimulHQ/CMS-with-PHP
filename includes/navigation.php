@@ -29,12 +29,10 @@
                  <li>
                      <a href="Admin">Admin</a>
                  </li>
-                 <!-- <li>
-                     <a href="#">Services</a>
-                 </li>
+                 
                  <li>
-                     <a href="#">Contact</a>
-                 </li> -->
+                     <a href="registration.php">Registration</a>
+                 </li> 
              </ul>
          </div>
          <!-- /.navbar-collapse -->

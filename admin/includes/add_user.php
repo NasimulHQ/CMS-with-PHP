@@ -11,8 +11,9 @@ if (isset($_POST['create_user'])) {
     $query = "INSERT INTO users( username, user_password, user_firstname, user_lastname, user_email, user_image, user_role, randSalt) ";
 
     $query .= "VALUES( '$username', '$user_password','$user_firstname','$user_lastname','$user_email', '', '$user_role', '') ";
-    
+
     // $query = "INSERT INTO `users` (`user_id`, `username`, `user_password`, `user_firstname`, `user_lastname`, `user_email`, `user_image`, `user_role`, `randSalt`) VALUES (NULL, '$username', '$user_password', '$user_firstname', '$user_lastname', '$user_email', '', '$user_role', '')";
+
 
     $create_user_query = mysqli_query($connection, $query);
 

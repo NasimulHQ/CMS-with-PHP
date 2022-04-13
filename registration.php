@@ -19,9 +19,16 @@ if(isset($_POST['submit'])){
         die("Failed query" . mysqli_error($connection));
     }
 
-    while ( $row = mysqli_fetch_array($select_query_randsalt)){
-      echo  $salt = $row['randSalt'];
-    }
+     $row = mysqli_fetch_array($select_query_randsalt);
+       $salt = $row['randSalt'];
+
+ $query = "INSERT INTO users (username, user_email, user_password, user_role, user_firstname, user_lastname, user_image)";
+ $query .= "VALUES('{$username}', '{$email}', '{$password}', 'subcriber', '', '', '')";
+ $register_user_query = mysqli_query($connection, $query);
+ if(!$register_user_query) {
+     die("Query Failed". mysqli_error($connection). ' ' . mysqli_error($connection));
+ }  
+    
 }
 
 ?>
