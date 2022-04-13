@@ -23,6 +23,7 @@ if(isset($_POST['submit'])){
 
         $row = mysqli_fetch_array($select_query_randsalt);
         $salt = $row['randSalt'];
+        // $password = md5($password);
         $password = crypt($password, $salt);
 
         $query = "INSERT INTO users (username, user_email, user_password, user_role, user_firstname, user_lastname, user_image)";
